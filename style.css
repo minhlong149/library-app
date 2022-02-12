@@ -1,0 +1,20 @@
+:root, button {
+  font-family: "Be Vietnam Pro", sans-serif;
+  --dark: #313552;
+  --light: #EEE6CE;
+  --primary: #2EB086;
+  --secondary: #B8405E;
+}
+/*  */
+.book h1, h2 {
+  font-family: "Xanh Mono", monospace;
+}
+
+body {
+  color: var(--light);
+  background-color: var(--dark);
+}
+
+.book {
+  background-color: var(--primary);
+}
