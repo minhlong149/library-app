@@ -48,7 +48,7 @@ body {
 
 /* Styling input form */
 
-.form-input {
+form {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 0.5em 1em;
