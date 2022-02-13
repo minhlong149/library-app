@@ -8,6 +8,7 @@ button {
   --primary: #2eb086;
   --primary-active: #008760;
   --secondary: #b8405e;
+  --secondary-active: #a0294b;
 }
 
 .book h1,
@@ -16,6 +17,15 @@ h2 {
 }
 
 /* Global */
+
+h1, h2 {
+  margin: 0 0 .5em;
+}
+
+button {
+  border: none;
+  padding: 0.5em 1em;
+}
 
 button:hover {
   cursor: pointer;
@@ -38,10 +48,6 @@ body {
 
 /* Styling input form */
 
-.form > h1 {
-  margin: 0 0 .5em;
-}
-
 .form-input {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -55,8 +61,6 @@ body {
 button[type="submit"] {
   color: var(--light);
   background: var(--primary);
-  border: none;
-  padding: 0.5em;
   margin-top: .5em;
 }
 
@@ -64,7 +68,7 @@ button[type="submit"]:hover {
   background-color: var(--primary-active);
 }
 
-/* Styling bookcards */
+/* Styling book cards */
 
 .library {
   display: flex;
@@ -74,7 +78,27 @@ button[type="submit"]:hover {
 
 .book {
   background-color: var(--primary);
+
   width: 600px;
+  text-align: center;
+
   padding: 20px;
   margin: 20px;
+}
+
+.book > button {
+  color: var(--light);
+  background-color: var(--secondary);
+}
+
+.book > button:hover {
+  background-color: var(--secondary-active);
+}
+
+.pages::before {
+  content: "Pages: ";
+}
+
+.readStatus::before {
+  content: "Status: ";
 }
