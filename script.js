@@ -1,5 +1,3 @@
-let myLibrary = [];
-
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
@@ -9,6 +7,7 @@ class Book {
   }
 }
 
+const libraryCards = document.querySelector(".library");
 function displayBook(book) {
   // Create book card
   const bookCard = document.createElement("div");
@@ -51,69 +50,47 @@ function displayBook(book) {
   bookCard.appendChild(deleteButton);
 
   // Displays the book on the page
-  const libraryCards = document.querySelector(".library");
   libraryCards.prepend(bookCard);
-}
-
-function displaysBooks() {
-  myLibrary.forEach((book) => displayBook(book));
 }
 
 const submitButton = document.querySelector(".input-submit");
 submitButton.addEventListener("click", () => {
-  // Get form values
+  // TODO: button should brings up a form
+
+  // Get values from input
   const title = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
   const readStatus = document.querySelector("#readStatus").checked;
 
-  // Checked if form is valid
+  // Checked if input is valid
   if (title == "" || author == "" || pages == "") return;
 
-  // Create Book object from the from
+  // Create a Book object and display it
   const newBook = new Book(title, author, pages, readStatus);
-  console.log(newBook); //for testing
-
-  // Add book to library & display it
-  myLibrary.push(newBook);
   displayBook(newBook);
 
-  // Reset form values
-  document.querySelector("#title").value = null;
-  document.querySelector("#author").value = null;
-  document.querySelector("#pages").value = null;
+  // Reset input
+  document.querySelector("#title").value =
+    document.querySelector("#author").value =
+    document.querySelector("#pages").value =
+      null;
   document.querySelector("#readStatus").checked = false;
 });
 
-const sampleBook = new Book("Harry Potter", "J. K. Rowling", 8, true);
-const sampleBook2 = new Book("Marxism-Leninism", "Marx & Lenin", 247);
-
-myLibrary.push(sampleBook);
-myLibrary.push(sampleBook2);
-myLibrary.push(sampleBook);
-myLibrary.push(sampleBook2);
-myLibrary.push(sampleBook);
-myLibrary.push(sampleBook2);
-myLibrary.push(sampleBook);
-myLibrary.push(sampleBook2);
-
-displaysBooks();
-
-const bookCards = document.querySelectorAll(".book");
-bookCards.forEach((card) => {
-  const statusButton = card.querySelector(".read-update");
-  statusButton.addEventListener("click", () => {
-    const status = card.querySelector(".book-readStatus");
-    console.log(card.parentElement);
+document.body.addEventListener("click", (event) => {
+  if (event.target.classList == "read-update") {
+    // toggles book’s read status
+    const statusButton = event.target;
+    const book = statusButton.parentElement;
+    const status = book.querySelector(".book-readStatus");
     [status.textContent, statusButton.textContent] = [
       statusButton.textContent,
       status.textContent,
     ];
-  });
-
-  const deleteButton = card.querySelector(".delete");
-  deleteButton.addEventListener("click", () => {
-    // should ask for confirmation
-    card.remove();
-  });
+  } else if (event.target.classList == "delete") {
+    // remove the book
+    const book = event.target.parentElement;
+    book.remove();
+  }
 });
