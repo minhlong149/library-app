@@ -90,7 +90,30 @@ const sampleBook2 = new Book("Marxism-Leninism", "Marx & Lenin", 247);
 
 myLibrary.push(sampleBook);
 myLibrary.push(sampleBook2);
-
-console.log(myLibrary);
+myLibrary.push(sampleBook);
+myLibrary.push(sampleBook2);
+myLibrary.push(sampleBook);
+myLibrary.push(sampleBook2);
+myLibrary.push(sampleBook);
+myLibrary.push(sampleBook2);
 
 displaysBooks();
+
+const bookCards = document.querySelectorAll(".book");
+bookCards.forEach((card) => {
+  const statusButton = card.querySelector(".read-update");
+  statusButton.addEventListener("click", () => {
+    const status = card.querySelector(".book-readStatus");
+    console.log(card.parentElement);
+    [status.textContent, statusButton.textContent] = [
+      statusButton.textContent,
+      status.textContent,
+    ];
+  });
+
+  const deleteButton = card.querySelector(".delete");
+  deleteButton.addEventListener("click", () => {
+    // should ask for confirmation
+    card.remove();
+  });
+});
