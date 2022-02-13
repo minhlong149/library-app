@@ -89,16 +89,17 @@ button[type="submit"]:hover {
 .book > button {
   color: var(--light);
   background-color: var(--secondary);
+  margin: 0 8px;
 }
 
 .book > button:hover {
   background-color: var(--secondary-active);
 }
 
-.pages::before {
+.book-pages::before {
   content: "Pages: ";
 }
 
-.readStatus::before {
+.book-readStatus::before {
   content: "Status: ";
 }
